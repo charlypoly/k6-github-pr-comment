@@ -52,6 +52,8 @@ export function githubComment(data, options) {
     console.log("Not a Pull Request. Skipping comment creation...");
     return;
   }
+  
+  console.log('Getting existing comment ...')
 
   const existingComment = getExistingComment(prNumber);
   const passes = checkFailures === 0 && thresholdFailures === 0;
@@ -115,6 +117,8 @@ export function githubComment(data, options) {
         },
       }
     );
+    
+    assert2XX(res, "Failed to get existing comment");
 
     const comments = res.json();
 
