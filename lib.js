@@ -119,6 +119,11 @@ export function githubComment(data, options) {
     );
     
     assert2XX(res, "Failed to get existing comment");
+    
+    console.log('getExistingComment', res)
+    if (res) {
+      console.log('getExistingComment', JSON.stringify(res, null, 2))
+    }
 
     const comments = res.json();
 
